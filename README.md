@@ -1,29 +1,16 @@
-# stelo
+# stelo-movies
 
-## Project setup
+## 1º Instalar pacotes do projeto
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 2º Executar projeto em ambiente de desenvolvimento
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 3º Compilar projeto para publicar em ambiente de produção
 ```
 npm run build
 ```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
