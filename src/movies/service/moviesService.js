@@ -1,4 +1,4 @@
-import api from "../api";
+import api from "../../api";
 
 export const getPopulares = () => {
   return api.get("/5d4a06b03200005e00600f5c").then(r => r.data);

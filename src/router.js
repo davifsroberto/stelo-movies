@@ -1,9 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
-import EmCartaz from "./movies/EmCartaz.vue";
-import Populares from "./movies/Populares.vue";
-import Avaliados from "./movies/Avaliados.vue";
-import Estreias from "./movies/Estreias.vue";
+import EmCartaz from "./movies/components/EmCartaz.vue";
+import Populares from "./movies/components/Populares.vue";
+import Avaliados from "./movies/components/Avaliados.vue";
+import Estreias from "./movies/components/Estreias.vue";
 
 Vue.use(Router);
 

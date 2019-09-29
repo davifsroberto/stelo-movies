@@ -1,6 +1,6 @@
-# stelo-movies
+# Stelo Movies - Davi Roberto
 
-## 1º Instalar pacotes do projeto
+## 1º Instalar os pacotes do projeto
 ```
 npm install
 ```

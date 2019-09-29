@@ -1,28 +1,28 @@
 <template>
-  <div id="estreias">    
-    <MoviesGallery titulo="Próximas Estreias" :movies=movies />    
+  <div id="emCartaz">    
+    <MoviesGallery titulo="Em Cartaz" :movies=movies />    
   </div>    
 </template>
 
 <script>
 import MoviesGallery from "./MoviesGallery";
-import { getEstreias } from "./moviesService.js";
+import { getEmCartaz } from "../service/moviesService.js";
 
 export default {
   data: () => ({
-    movies: {}
+    movies: {},
   }),
   components: {
     MoviesGallery
   },
   methods: {
     fetchMovies() {
-      getEstreias().then(movies => {
+      getEmCartaz().then(movies => {
         this.movies = movies;
       });
     }
   },
-  mounted() {
+  mounted(){
     this.fetchMovies();
   }
 }

@@ -1,27 +1,30 @@
 <template>
-  <div id="emCartaz">    
-    <MoviesGallery titulo="Em Cartaz" :movies=movies />    
+  <div id="avaliados">    
+    <MoviesGallery titulo="Mais Bem Avaliados" :movies=movies />    
   </div>    
 </template>
 
 <script>
 import MoviesGallery from "./MoviesGallery";
-import { getEmCartaz } from "./moviesService.js";
+import { getAvaliados } from "../service/moviesService.js";
 
 export default {
   data: () => ({
     movies: {},
   }),
+
   components: {
     MoviesGallery
   },
+
   methods: {
     fetchMovies() {
-      getEmCartaz().then(movies => {
+      getAvaliados().then(movies => {
         this.movies = movies;
       });
     }
   },
+  
   mounted(){
     this.fetchMovies();
   }

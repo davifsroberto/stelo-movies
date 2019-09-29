@@ -1,12 +1,12 @@
 <template>
-  <div id="avaliados">    
-    <MoviesGallery titulo="Mais bem avaliados" :movies=movies />    
+  <div id="populares">    
+    <MoviesGallery titulo="Populares" :movies=movies />    
   </div>    
 </template>
 
 <script>
 import MoviesGallery from "./MoviesGallery";
-import { getAvaliados } from "./moviesService.js";
+import { getPopulares } from "../service/moviesService.js";
 
 export default {
   data: () => ({
@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     fetchMovies() {
-      getAvaliados().then(movies => {
+      getPopulares().then(movies => {
         this.movies = movies;
       });
     }

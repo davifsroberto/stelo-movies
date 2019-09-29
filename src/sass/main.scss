@@ -1,0 +1,30 @@
+$white: #FFF;
+$color-default: #4F237F;
+
+#app {
+  a {    
+    &:hover{
+      text-decoration: underline;
+    };
+    text-decoration: none;
+    color: $color-default;
+  };
+
+  header {
+    background-color: $color-default;
+  };
+
+  footer {
+    background-color: $color-default;
+    color: $white;
+    a {
+      color: $white;
+    }
+  }
+
+  #moviesGallery {
+    .img-movie, .btn-desc {
+      width: 100%;
+    }
+  }
+}
