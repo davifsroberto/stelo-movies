@@ -1,9 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import EmCartaz from "./movies/components/EmCartaz.vue";
-import Populares from "./movies/components/Populares.vue";
-import Avaliados from "./movies/components/Avaliados.vue";
-import Estreias from "./movies/components/Estreias.vue";
+import Home from "./movies/pages/Home.vue";
 
 Vue.use(Router);
 
@@ -12,22 +9,26 @@ export default new Router({
     {
       path: "/",
       name: "populares",
-      component: Populares
+      component: Home,
+      params: { url: '5d4a06b03200005e00600f5c' }
     },
     {
-      path: "/cartaz",
-      name: "cartaz",
-      component: EmCartaz
-    },
-    {
-      path: "/avaliados",
+      path: "/:urlMovie",
       name: "avaliados",
-      component: Avaliados
+      component: Home,
+      props: true     
     },
     {
-      path: "/estreias",
+      path: "/:urlMovie",
       name: "estreias",
-      component: Estreias
+      component: Home,
+      props: true     
+    },
+    {
+      path: "/:urlMovie",
+      name: "cartaz",
+      component: Home,
+      props: true     
     }
   ]
 });

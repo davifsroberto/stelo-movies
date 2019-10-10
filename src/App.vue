@@ -17,11 +17,22 @@
                       <v-icon>mdi-dots-vertical</v-icon>
                     </v-btn>
                   </template>    
-                  <v-list> 
-                    <v-list-item><router-link to="/">Populares</router-link></v-list-item>                  
-                    <v-list-item><router-link to="/cartaz">Em Cartaz</router-link></v-list-item>                  
-                    <v-list-item><router-link to="/avaliados">Mais bem avaliados</router-link></v-list-item>                  
-                    <v-list-item><router-link to="/estreias">Próximas Estreias</router-link></v-list-item>                               
+                  <v-list>                                     
+                    <v-list-item>
+                      <router-link :to="{ name: 'populares' }">Populares</router-link>
+                    </v-list-item>        
+
+                    <v-list-item>
+                      <router-link :to="{ name: 'avaliados', params: { urlMovie: '5d4a0703320000e37d600f5d' } }">Mais bem avaliados</router-link>
+                    </v-list-item>                  
+
+                    <v-list-item>
+                      <router-link :to="{ name: 'estreias', params: { urlMovie: '5d4a07203200008942600f5e' } }">Próximas Estreias</router-link>
+                    </v-list-item>                               
+
+                    <v-list-item>
+                      <router-link :to="{ name: 'cartaz', params: { urlMovie: '5d4a07363200009d84600f5f' } }">Em Cartaz</router-link>
+                    </v-list-item>                                    
                   </v-list>
                 </v-menu>
               </v-card-title>
@@ -31,7 +42,7 @@
       </header>
 
       <section>
-        <router-view></router-view>
+        <router-view :key="$route.fullPath"></router-view>
       </section>
 
       <footer class="text-center">
