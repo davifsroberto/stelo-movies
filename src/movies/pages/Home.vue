@@ -15,7 +15,7 @@ import MoviesGallery from "../components/MoviesGallery";
 import MoviesService from "../service/MoviesService";
 
 export default {
-  name: "Home",
+  name: 'home',
 
   components: {
     MoviesGallery
@@ -23,13 +23,11 @@ export default {
 
   props: ['urlMovie'],
 
-  data () {
-    return {
-      results: [],
-      totalResults: 5,
-      totalPages: ''
-    }
-  },
+  data: () => ({    
+    results: [],
+    totalResults: 5,
+    totalPages: ''    
+  }),
 
   created() {    
     this.moviesService =  new MoviesService();
@@ -50,13 +48,14 @@ export default {
         .catch((error) => {
           console.log(this.error);
         })
+    },
+
+    showDescricao(movie) {
+      this.dialog = true;
+      this.currentMovie = movie;
     }
 
   }
   
 }
 </script>
-
-<style>
-
-</style>

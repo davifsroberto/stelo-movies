@@ -35,7 +35,7 @@
 <script>
 
 export default {  
-  name: "movies-gallery",
+  name: 'movies-gallery',
 
   props: [
     'results',
