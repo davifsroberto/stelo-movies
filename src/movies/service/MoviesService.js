@@ -3,20 +3,14 @@ import store from '../../store/Store'
 
 export default class MoviesService {
  
-  getMovies(url, loading = true) {    
-    const request = api
-    .get(url)
+  getMovies(url) {    
+    const request = api.get(url)    
     .then(response => response)
     .catch((e) => {})
     .finally(() => {
-      if (loading) {
-        store.commit('loading/remove', request);
-      }
+      store.commit('loading/remove');      
     });
-
-    if (loading) {
-      store.commit('loading/add', request);
-    }
+    store.commit('loading/add');
 
     return request;
   }

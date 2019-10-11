@@ -1,18 +1,20 @@
 <template>
-  <div id="home">
-    
+  <div id='home'>
+
     <movies-gallery
-      :results="results"
-      :totalResults="totalResults"
-      :totalPages="totalPages"
+      :results='results'
+      :totalResults='totalResults'
+      :totalPages='totalPages'
+      :categoria='categoria'
     ></movies-gallery>
     
   </div>
 </template>
 
 <script>
-import MoviesGallery from "../components/MoviesGallery";
-import MoviesService from "../service/MoviesService";
+import MoviesGallery from '../components/MoviesGallery';
+import MoviesService from '../service/MoviesService';
+import HelperMovie from '../helpers/HelperMovie';
 
 export default {
   name: 'home',
@@ -26,15 +28,18 @@ export default {
   data: () => ({    
     results: [],
     totalResults: 5,
-    totalPages: ''    
+    totalPages: '',
+    categoria:''    
   }),
 
   created() {    
-    this.moviesService =  new MoviesService();
+    this.moviesService = new MoviesService();
+    this.helperMovie = new HelperMovie();
   },
 
   mounted() {
-    this.printMovies(this.$route.params.urlMovie);    
+    this.printMovies(this.$route.params.urlMovie);
+    this.categoria = this.helperMovie.categoriaPage(this.$route.name);
   },
 
   methods: {

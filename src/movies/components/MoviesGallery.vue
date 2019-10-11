@@ -2,7 +2,7 @@
   <div id="moviesGallery">
     <v-container class="col-sm-8 offset-sm-2">
       <v-row>                      
-        <!-- <h1 class="col-sm-12">{{this.titulo}}</h1> -->
+        <h1 class="col-sm-12">{{categoria}}</h1>
         <v-col class="col-md-4 col-lg-3 col-xl-3 col-12" 
           v-for="(result, index) in results" :key="index">
           <v-card>

@@ -1,11 +1,11 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store/Store";
-import vueMoment from "vue-moment";
-import moment from "moment";
-import locale from "moment/locale/pt-br";
-import vuetify from "./plugins/vuetify";
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store/Store';
+import vueMoment from 'vue-moment';
+import moment from 'moment';
+import locale from 'moment/locale/pt-br';
+import vuetify from './plugins/vuetify';
 
 Vue.use(vueMoment, { moment, locale });
 
@@ -16,4 +16,4 @@ new Vue({
   store,
   vuetify,
   render: h => h(App)
-}).$mount("#app");
+}).$mount('#app');
