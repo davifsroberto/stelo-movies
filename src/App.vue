@@ -95,7 +95,6 @@ export default {
 
   created() {
     this.categoriaMovie = categoria;
-    console.log(this.$event);
   }
   
 };
