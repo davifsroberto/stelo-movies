@@ -1,14 +1,15 @@
 <template>
   <div id="moviesGallery">
     <v-container class="col-sm-8 offset-sm-2">
-      <v-row>                      
+      <v-row>                                  
+        {{results}}       
         <h1 class="col-sm-12">{{categoria}}</h1>
-        <v-col class="col-md-4 col-lg-3 col-xl-3 col-12" 
-          v-for="(result, index) in results" :key="index">
+        <v-col v-model="totalResult" class="col-md-4 col-lg-3 col-xl-3 col-12" 
+          v-for="(result, index) in totalResult" :key="index">
           <v-card>
             <v-card-title>{{result.title}}</v-card-title>
             <span class="grey--text pl-3"><strong>Exibição:</strong> {{result.release_date | moment("dddd, DD/MM/YYYY")}}</span><br>
-            <span class="grey--text pl-3"><strong>Nota:</strong> {{result.vote_average}}</span>
+            <span classs="grey--text pl-3"><strong>Nota:</strong> {{result.vote_average}}</span>
           
             <img class="img-movie mt-1" :src="`https://image.tmdb.org/t/p/original/${result.poster_path}`"/>
             <v-btn class="btn-desc" @click="showDescricao(result)" large v-if="result.overview != ''" text color="#4F237F" dark>Descrição</v-btn>
@@ -27,6 +28,16 @@
             </v-card>
           </v-dialog>
         </div>
+
+        <!-- TODO: Arrumar paginação -->     
+         <div class="text-center">
+          <v-pagination
+            v-model="page"
+            :length="paginacao"
+            circle
+          ></v-pagination>
+        </div>  
+
       </v-row>      
     </v-container>
   </div>
@@ -41,15 +52,22 @@ export default {
     'results',
     'totalPages',
     'totalResults',
-    'categoria'
+    'categoria',
+    'paginacao'
   ],
 
   data: () => ({
     show: false,
     dialog: false,
     currentMovie: {},
-    page: 1
+    page: 1    
   }),
+
+  computed: {
+    totalResult() {
+      return this.totalResults ? this.results.slice(0,this.totalResults) : this.results      
+    }
+  },
   
   methods: {
     showDescricao(movie) {

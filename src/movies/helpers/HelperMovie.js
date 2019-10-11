@@ -1,25 +1,32 @@
+import categoria from '../helpers/categoria'
+
 export default class HelperMovie {
   
-  categoriaPage(namePage) {        
+  categoriaPage(namePage) {     
+    
     switch (namePage) {
       case 'populares':
-        this.categoria = 'Populares'
+        this.categoria = categoria.populares.descricao
       break;     
-      
+
       case 'avaliados':
-        this.categoria = 'Mais bem avaliados'        
+        this.categoria = categoria.avaliados.descricao
       break;     
 
       case 'estreias':
-        this.categoria = 'Próximas Estreias'
+        this.categoria = categoria.estreias.descricao
       break;     
-      
+
       case 'cartaz':
-        this.categoria = 'Em Cartaz'
-      break;             
+        this.categoria = categoria.cartaz.descricao
+      break;       
     }
 
     return this.categoria;
+  }
+
+  paginacaoPage(totalRange, totalPages) {
+    return Math.round(totalRange/totalPages);
   }
   
 }

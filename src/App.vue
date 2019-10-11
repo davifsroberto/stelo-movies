@@ -20,19 +20,44 @@
                   </template>    
                   <v-list>                                     
                     <v-list-item>
-                      <router-link :to="{ name: 'populares' }">Populares</router-link>
+                      <router-link 
+                        :to="{ 
+                          name: this.categoriaMovie.populares.nome 
+                        }">
+                      {{this.categoriaMovie.populares.descricao}}</router-link>
                     </v-list-item>        
 
                     <v-list-item>
-                      <router-link :to="{ name: 'avaliados', params: { urlMovie: '5d4a0703320000e37d600f5d' } }">Mais bem avaliados</router-link>
+                      <router-link 
+                        :to="{ 
+                          name: this.categoriaMovie.avaliados.nome, 
+                          params: { 
+                            urlMovie: this.categoriaMovie.avaliados.url 
+                          } 
+                        }"
+                      >{{this.categoriaMovie.avaliados.descricao}}</router-link>
                     </v-list-item>                  
 
                     <v-list-item>
-                      <router-link :to="{ name: 'estreias', params: { urlMovie: '5d4a07203200008942600f5e' } }">Próximas Estreias</router-link>
+                      <router-link 
+                        :to="{ 
+                          name: this.categoriaMovie.estreias.nome, 
+                          params: { 
+                            urlMovie: this.categoriaMovie.estreias.url 
+                          } 
+                        }">
+                      {{this.categoriaMovie.estreias.descricao}}</router-link>
                     </v-list-item>                               
 
-                    <v-list-item>
-                      <router-link :to="{ name: 'cartaz', params: { urlMovie: '5d4a07363200009d84600f5f' } }">Em Cartaz</router-link>
+                      <v-list-item>
+                      <router-link 
+                        :to="{ 
+                          name: this.categoriaMovie.cartaz.nome, 
+                          params: { 
+                            urlMovie: this.categoriaMovie.cartaz.url 
+                          } 
+                        }">
+                      {{this.categoriaMovie.cartaz.descricao}}</router-link>
                     </v-list-item>                                    
                   </v-list>
                 </v-menu>
@@ -47,11 +72,11 @@
       </section>
 
       <footer class="text-center">
-        <div class="container">
+        <!-- <div class="container">
           <p class="my-2">© 2019 Davi Roberto + Stelo Soluções de Pagamentos<br>Desenvolvido por
             <a href="https://www.linkedin.com/in/davifsroberto/" target="_blank">Davi Roberto</a>
           </p>
-        </div>        
+        </div>         -->
       </footer>
 
     </v-app>
@@ -59,8 +84,19 @@
 </template>
 
 <script>
+import categoria from './movies/helpers/categoria'
 
 export default {
-  name: 'App'
+  name: 'App',
+
+  data: () => ({
+    categoriaMovie:{}
+  }),
+
+  created() {
+    this.categoriaMovie = categoria;
+    console.log(this.$event);
+  }
+  
 };
 </script>

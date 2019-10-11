@@ -4,7 +4,7 @@
     <movies-gallery
       :results='results'
       :totalResults='totalResults'
-      :totalPages='totalPages'
+      :paginacao='paginacao'
       :categoria='categoria'
     ></movies-gallery>
     
@@ -27,9 +27,10 @@ export default {
 
   data: () => ({    
     results: [],
-    totalResults: 5,
-    totalPages: '',
-    categoria:''    
+    totalResults: 6,
+    totalPages: 2,
+    categoria: '',
+    paginacao: 0
   }),
 
   created() {    
@@ -40,6 +41,7 @@ export default {
   mounted() {
     this.printMovies(this.$route.params.urlMovie);
     this.categoria = this.helperMovie.categoriaPage(this.$route.name);
+    this.paginacao = this.helperMovie.paginacaoPage(this.totalResults, this.totalPages);
   },
 
   methods: {
@@ -47,6 +49,7 @@ export default {
       this.moviesService
         .getMovies(this.urlMovie == undefined ? url = '5d4a06b03200005e00600f5c' : url = this.urlMovie)
         .then((response) => {
+          console.log(response);
           this.results = response.data.results;
           this.totalPages = response.data.total_pages;
         })
