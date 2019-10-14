@@ -2,7 +2,7 @@
   <div id="moviesGallery">
     <v-container class="col-sm-8 offset-sm-2">
       <v-row>                                  
-        {{results}}       
+        <!-- {{results}}        -->
         <h1 class="col-sm-12">{{categoria}}</h1>
         <v-col v-model="totalResult" class="col-md-4 col-lg-3 col-xl-3 col-12" 
           v-for="(result, index) in totalResult" :key="index">
@@ -28,17 +28,17 @@
             </v-card>
           </v-dialog>
         </div>
+      </v-row>              
 
-        <!-- TODO: Arrumar paginação -->     
-         <div class="text-center">
-          <v-pagination
-            v-model="page"
-            :length="paginacao"
-            circle
-          ></v-pagination>
-        </div>  
-
-      </v-row>      
+      <!-- TODO: Arrumar paginação -->     
+      <div class="text-center">
+        <v-pagination
+          v-model="page"
+          :length="paginacao"
+          circle
+        ></v-pagination>
+      </div>  
+      
     </v-container>
   </div>
 </template>

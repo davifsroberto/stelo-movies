@@ -2,7 +2,7 @@ export default  {
   namespaced: true,
   	
 	mutations: {
-		add() {         
+    add() {         
       const loading = document.getElementById('loading');
       loading.innerHTML = '<div id="overl" class="overlay"><div class="loader"></div></div>';
     },
