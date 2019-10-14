@@ -8,7 +8,7 @@ export default class MoviesService {
     .then(response => response)
     .catch((e) => {})
     .finally(() => {
-      store.commit('loading/remove');      
+      store.commit('loading/remove');     
     });
     store.commit('loading/add');
 

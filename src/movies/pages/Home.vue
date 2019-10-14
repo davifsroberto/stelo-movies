@@ -15,6 +15,7 @@
 import MoviesGallery from '../components/MoviesGallery';
 import MoviesService from '../service/MoviesService';
 import HelperMovie from '../helpers/HelperMovie';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'home',
@@ -27,10 +28,10 @@ export default {
 
   data: () => ({    
     results: [],
-    totalResults: 6,
-    totalPages: 2,
+    totalResults: 10,    
     categoria: '',
-    paginacao: 0
+    paginacao: 0,
+    
   }),
 
   created() {    
@@ -40,8 +41,7 @@ export default {
 
   mounted() {
     this.printMovies(this.$route.params.urlMovie);
-    this.categoria = this.helperMovie.categoriaPage(this.$route.name);
-    this.paginacao = this.helperMovie.paginacaoPage(this.totalResults, this.totalPages);
+    this.categoria = this.helperMovie.categoriaPage(this.$route.name);    
   },
 
   methods: {
@@ -49,9 +49,9 @@ export default {
       this.moviesService
         .getMovies(this.urlMovie == undefined ? url = '5d4a06b03200005e00600f5c' : url = this.urlMovie)
         .then((response) => {
-          console.log(response);
-          this.results = response.data.results;
-          this.totalPages = response.data.total_pages;
+          const listMovies = response.data.results;
+          this.results = listMovies;          
+          this.setMovies(this.results)
         })
         .catch((error) => {
           console.log(this.error);
@@ -61,8 +61,14 @@ export default {
     showDescricao(movie) {
       this.dialog = true;
       this.currentMovie = movie;
-    }
+    },
 
+    ...mapActions('Movies', ['setMovies'])
+
+  },
+
+  computed: {
+    
   }
   
 }

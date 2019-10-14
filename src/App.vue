@@ -90,7 +90,7 @@ export default {
   name: 'App',
 
   data: () => ({
-    categoriaMovie:{}
+    categoriaMovie: {}
   }),
 
   created() {

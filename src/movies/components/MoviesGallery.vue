@@ -3,7 +3,14 @@
     <v-container class="col-sm-8 offset-sm-2">
       <v-row>                                  
         <!-- {{results}}        -->
-        <h1 class="col-sm-12">{{categoria}}</h1>
+        <div class="col-sm-6">
+          <h1>{{categoria}}</h1>
+        </div>
+        
+        <div class="col-sm-6">
+          <v-select label="Limite"></v-select>        
+        </div>
+                
         <v-col v-model="totalResult" class="col-md-4 col-lg-3 col-xl-3 col-12" 
           v-for="(result, index) in totalResult" :key="index">
           <v-card>
@@ -31,19 +38,21 @@
       </v-row>              
 
       <!-- TODO: Arrumar paginação -->     
-      <div class="text-center">
+      <!-- <div class="text-center">
         <v-pagination
           v-model="page"
           :length="paginacao"
           circle
         ></v-pagination>
-      </div>  
+      </div>   -->
       
     </v-container>
   </div>
 </template>
 
 <script>
+import store from '../../store/Store';
+import { mapState } from 'vuex';
 
 export default {  
   name: 'movies-gallery',
@@ -60,13 +69,20 @@ export default {
     show: false,
     dialog: false,
     currentMovie: {},
-    page: 1    
+    page: 1,
+    range: [5, 10, 15,]    
   }),
 
   computed: {
     totalResult() {
-      return this.totalResults ? this.results.slice(0,this.totalResults) : this.results      
-    }
+      return this.totalResults ? this.results.slice(0, this.totalResults) : this.results      
+    },
+
+    ...mapState('Movies', ['listMovies'])
+  },
+
+  watch: {
+    
   },
   
   methods: {
@@ -74,6 +90,10 @@ export default {
       this.dialog = true;
       this.currentMovie = movie;
     }    
+  },
+
+  mounted() {
+
   }
   
 };
