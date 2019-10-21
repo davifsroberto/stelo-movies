@@ -3,13 +3,12 @@ const state = {
 };
 
 const getters = {
-  results: state => state.listMovies
+  result: state => state.listMovies
 };
 
 const mutations = {
   SETMOVIES(state, payload) {
     state.listMovies = payload;
-    console.log(state.listMovies);
   }
 };
 

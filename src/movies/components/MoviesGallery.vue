@@ -1,16 +1,11 @@
 <template>
   <div id="moviesGallery">
     <v-container class="col-sm-8 offset-sm-2">
-      <v-row>                                  
-        <!-- {{results}}        -->
-        <div class="col-sm-6">
+      <v-row>                                          
+        <div class="col-sm-12">
           <h1>{{categoria}}</h1>
         </div>
-        
-        <div class="col-sm-6">
-          <v-select label="Limite"></v-select>        
-        </div>
-                
+                        
         <v-col v-model="totalResult" class="col-md-4 col-lg-3 col-xl-3 col-12" 
           v-for="(result, index) in totalResult" :key="index">
           <v-card>
@@ -18,8 +13,8 @@
             <span class="grey--text pl-3"><strong>Exibição:</strong> {{result.release_date | moment("dddd, DD/MM/YYYY")}}</span><br>
             <span classs="grey--text pl-3"><strong>Nota:</strong> {{result.vote_average}}</span>
           
-            <img class="img-movie mt-1" :src="`https://image.tmdb.org/t/p/original/${result.poster_path}`"/>
-            <v-btn class="btn-desc" @click="showDescricao(result)" large v-if="result.overview != ''" text color="#4F237F" dark>Descrição</v-btn>
+            <img class="img-movie mt-1" :src="`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${result.poster_path}`"/>
+            <v-btn class="btn-desc" @click="showDescription(result)" large v-if="result.overview != ''" text color="#4F237F" dark>Descrição</v-btn>
           </v-card>
         </v-col>
 
@@ -36,15 +31,6 @@
           </v-dialog>
         </div>
       </v-row>              
-
-      <!-- TODO: Arrumar paginação -->     
-      <!-- <div class="text-center">
-        <v-pagination
-          v-model="page"
-          :length="paginacao"
-          circle
-        ></v-pagination>
-      </div>   -->
       
     </v-container>
   </div>
@@ -58,8 +44,7 @@ export default {
   name: 'movies-gallery',
 
   props: [
-    'results',
-    'totalPages',
+    'results',    
     'totalResults',
     'categoria',
     'paginacao'
@@ -68,33 +53,21 @@ export default {
   data: () => ({
     show: false,
     dialog: false,
-    currentMovie: {},
-    page: 1,
-    range: [5, 10, 15,]    
+    currentMovie: {}    
   }),
 
   computed: {
     totalResult() {
       return this.totalResults ? this.results.slice(0, this.totalResults) : this.results      
-    },
-
-    ...mapState('Movies', ['listMovies'])
-  },
-
-  watch: {
-    
+    }
   },
   
   methods: {
-    showDescricao(movie) {
+    showDescription(movie) {
       this.dialog = true;
       this.currentMovie = movie;
     }    
-  },
-
-  mounted() {
-
-  }
+  }  
   
 };
 </script>

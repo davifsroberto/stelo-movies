@@ -2,7 +2,7 @@
   <div id='home'>
 
     <movies-gallery
-      :results='results'
+      :results='this.result'
       :totalResults='totalResults'
       :paginacao='paginacao'
       :categoria='categoria'
@@ -15,7 +15,9 @@
 import MoviesGallery from '../components/MoviesGallery';
 import MoviesService from '../service/MoviesService';
 import HelperMovie from '../helpers/HelperMovie';
-import { mapState, mapActions } from 'vuex';
+import categoria from '../helpers/categoria'
+import store from '../../store/Store';
+import { mapState, mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'home',
@@ -47,11 +49,9 @@ export default {
   methods: {
     printMovies(url) {      
       this.moviesService
-        .getMovies(this.urlMovie == undefined ? url = '5d4a06b03200005e00600f5c' : url = this.urlMovie)
-        .then((response) => {
-          const listMovies = response.data.results;
-          this.results = listMovies;          
-          this.setMovies(this.results)
+        .getMovies(this.urlMovie == undefined ? url = categoria.populares.url : url = this.urlMovie)
+        .then((response) => {          
+          this.setMovies(response.data.results);
         })
         .catch((error) => {
           console.log(this.error);
@@ -68,7 +68,7 @@ export default {
   },
 
   computed: {
-    
+    result: () => store.getters['Movies/result']
   }
   
 }
