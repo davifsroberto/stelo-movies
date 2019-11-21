@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "jserver": "node server.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
@@ -13,6 +14,7 @@
     "core-js": "^2.6.5",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
+    "sass-resources-loader": "^2.0.1",
     "vue": "^2.6.10",
     "vue-moment": "^4.0.0",
     "vue-router": "^3.0.3",
@@ -31,10 +33,12 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.0.0",
     "fibers": "^4.0.1",
+    "json-server": "^0.15.1",
     "material-design-icons-iconfont": "^5.0.1",
+    "node-sass": "^4.13.0",
     "prettier": "^1.18.2",
     "sass": "^1.22.12",
-    "sass-loader": "^7.3.1",
+    "sass-loader": "^8.0.0",
     "vue-cli-plugin-vuetify": "^0.6.3",
     "vue-template-compiler": "^2.6.10",
     "vuetify-loader": "^1.2.2"

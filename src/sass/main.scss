@@ -1,6 +1,7 @@
 $white: #FFF;
 $color-default: #4F237F;
 
+
 #app {
   a {    
     &:hover{
@@ -8,10 +9,6 @@ $color-default: #4F237F;
     };
     text-decoration: none;
     color: $color-default;
-  };
-
-  header {
-    background-color: $color-default;
   };
 
   footer {

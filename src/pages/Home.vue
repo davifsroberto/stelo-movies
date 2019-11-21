@@ -1,37 +1,37 @@
 <template>
-  <div id='home'>
+  <article id="home">
 
     <movies-gallery
-      :results='this.result'
-      :totalResults='totalResults'
-      :paginacao='paginacao'
-      :categoria='categoria'
+      :results="this.result"
+      :totalResults="totalResults"
+      :paginacao="paginacao"
+      :categoria="categoria"
     ></movies-gallery>
     
-  </div>
+  </article>
 </template>
 
 <script>
-import MoviesGallery from '../components/MoviesGallery';
-import MoviesService from '../service/MoviesService';
-import HelperMovie from '../helpers/HelperMovie';
-import categoria from '../helpers/categoria'
-import store from '../../store/Store';
-import { mapState, mapActions, mapGetters } from 'vuex';
+import MoviesGallery from "@/components/MoviesGallery";
+import MoviesService from "@/service/MoviesService";
+import HelperMovie from "@/helpers/HelperMovie";
+import categoria from "@/helpers/categoria"
+import store from "@/store/Store";
+import { mapActions } from "vuex";
 
 export default {
-  name: 'home',
+  name: "home",
 
   components: {
     MoviesGallery
   },
 
-  props: ['urlMovie'],
+  props: ["urlMovie"],
 
   data: () => ({    
     results: [],
-    totalResults: 10,    
-    categoria: '',
+    totalResults: 8,    
+    categoria: "",
     paginacao: 0,
     
   }),
@@ -63,12 +63,12 @@ export default {
       this.currentMovie = movie;
     },
 
-    ...mapActions('Movies', ['setMovies'])
+    ...mapActions("Movies", ["setMovies"])
 
   },
 
   computed: {
-    result: () => store.getters['Movies/result']
+    result: () => store.getters["Movies/result"]
   }
   
 }

@@ -10,7 +10,7 @@ npm install
 npm run serve
 ```
 
-### 3º Compilar projeto para publicar em ambiente de produção
+### 3º Executar JSON Server
 ```
-npm run build
+npm run jserver
 ```

@@ -1,5 +1,5 @@
-import api from '../../api';
-import store from '../../store/Store'
+import api from '../api';
+import store from '../store/Store'
 
 export default class MoviesService {
  
